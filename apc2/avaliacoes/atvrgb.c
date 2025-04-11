@@ -132,6 +132,7 @@ int main() {
   
 
   // Exercício 1
+  // imagem sem vermelho.
   unsigned char *pchar2 = (unsigned char *)imagem2;
 
   //começa do índice 3 (canal vermelho)
@@ -160,6 +161,7 @@ int main() {
   } 
   
   // Exercício 2
+  // imagem escala de cinza.
   unsigned char *pchar3 = (unsigned char *)imagem3;
   
   for(int i = 0; i < 400; i = i + 4 ) {
@@ -171,6 +173,7 @@ int main() {
       
   }
   // Exercício 3
+  //imagem diagonais azul.
   unsigned char *pchar4 = (unsigned char *)imagem4;
 
   for(int l = 0; l < 10; l++) {
@@ -191,57 +194,130 @@ int main() {
   }
 
   // Exercício 5
+  // imagem borda rosa.
   unsigned char *pchar5 = (unsigned char *)imagem5;
 
-  int i = 0;
-    if (0 <= i < 4*10) {
-      for (int i = 0; i < 4*10; i = i + 4){
-        pchar5[i+1] = 255;
-        pchar5[i+2] = 0;
-        pchar5[i+3] = 255;
-      }
-      } else if (4*10 <= i < 4*10*9) {
-        for (int i = 4*10; i < 4*10*9; i = i + (10*4)) {
-          pchar5[i+1] = 255;
-          pchar5[i+(4*9)+1] = 255;
+  for (int i = 0; i < 400;) {
+    if (0 <= i && i < 4*10) {
+      pchar5[i+1] = 255;
+      pchar5[i+2] = 0;
+      pchar5[i+3] = 255;
 
-          pchar5[i+2] = 0;
-          pchar5[i+(4*9)+2] = 0;
+      i = i + 4;
+    } else 
+    if (4*10 <= i && i < 4*10*9) {
+      pchar5[i+1] = 255;
+      pchar5[i+(4*9)+1] = 255;
 
-          pchar5[i+3] = 255;
-          pchar5[i+(4*9)+3] = 255;
-          }
-      } else if (i >= 4*10*9) { 
-        for (int i = 4*10*9; i < 4*10*10; i = i + 4) {
-        pchar5[i+1] = 255;
-        pchar5[i+2] = 0;
-        pchar5[i+3] = 255;
-     }
+      pchar5[i+2] = 0;
+      pchar5[i+(4*9)+2] = 0;
+
+      pchar5[i+3] = 255;
+      pchar5[i+(4*9)+3] = 255;
+
+      i = i + 4*10;
+    } else
+    if (i >= 4*10*9) {
+      pchar5[i+1] = 255;
+      pchar5[i+2] = 0;
+      pchar5[i+3] = 255;
+      i = i + 4;
     }
+
+  }
   // insira o seu código abaixo
   // solução:  
   // insira o seu código acima
 
   // Exercício 6
+  //Arvore verde embaixo
   unsigned char *pchar6 = (unsigned char *)imagem6;
+
+  for (int i = 0; i < 10 ; i++) {
+    for (int j = 0; j < 10; j++) { 
+      if (i <= j) {
+        imagem6[i][j] = 0x00640000;
+      } else {
+        imagem6[i][j] = imagem6[i][j];
+      }
+    }
+} 
   // insira o seu código abaixo
   // solução:  
   // insira o seu código acima
 
   // Exercício 7
+  //Arvore vermelha encima
   unsigned char *pchar7 = (unsigned char *)imagem7;
+
+  for (int i = 0; i < 10 ; i++) {
+    for (int j = 0; j < 10; j++) { 
+      if ((i + j) <= 9) {
+        imagem7[i][j] = 0xFF000000;
+      } else {
+        imagem7[i][j] = imagem7[i][j];
+      }
+    }
+} 
   // insira o seu código abaixo
   // solução:  
   // insira o seu código acima
 
-  // Exercício 8
+  // Exercício 8 
+  //Arvore espelhada esquerda laranja
   unsigned char *pchar8 = (unsigned char *)imagem8;
+
+  for (int i = 0; i < 10 ; i++) {
+    for (int j = 0; j < 10; j++) { 
+      if (i <= j && i < 5 && j < 5) {
+        imagem8[i][j] = 0xFF8C0000;
+      } else
+      if ((i + j) <= 9 && i >= 5 && j < 5) {
+        imagem8[j][i] = 0xFF8C0000;
+      } else {
+        imagem8[i][j] = imagem8[i][j];
+      }
+    }
+} 
+/*
+for (int i = 0; i < 10 ; i++) {
+  for (int j = 0; j < 10; j++) { 
+    if (i <= j && i < 5 && j < 5) {
+      imagem8[i][j] = 0xFF8C0000;
+    } else if (j <= i && i >= 5 && j < 5) {
+      imagem8[i][j] = 0xFF8C0000;
+    } else {
+      imagem8[i][j] = imagem8[i][j];
+    }
+  }
+} */
+
   // insira o seu código abaixo
   // solução:  
   // insira o seu código acima
 
   // Exercício 9
   unsigned char *pchar9 = (unsigned char *)imagem9;
+
+  for (int i = 0; i < 10 ; i++) {
+    for (int j = 0; j < 10; j++) {
+      //laranja
+      if (i <= j && i < 5 && j < 5) {
+        imagem9[i][j] = 0xFF8C0000;
+      } else if ((i + j) <= 9 && i >= 5 && j < 5) {
+        imagem9[j][i] = 0xFF8C0000;
+      } else
+      //verde
+      if (i <= j) {
+        imagem9[i][j] = 0x00640000;
+      } else
+      //vermelho
+      if ((i + j) <= 9) {
+        imagem9[i][j] = 0xFF000000;
+      } else
+        imagem9[i][j] = imagem9[i][j];
+    }
+  }
   // insira o seu código abaixo
   // solução:  
   // insira o seu código acima
@@ -336,13 +412,13 @@ int main() {
   }
 
   gotoxy(49, 27);
-  printf("Imagem9 união arvores");
+  printf("Imagem9 uniao arvores");
   gotoxy(49, 29);
   xoffset = 49, yoffset = 29;
   for (int x = 0; x < 10; x++) {
     for (int y = 0; y < 10; y++) {
-      draw_xy((x * 2) + xoffset, y + yoffset, (imagem8[x][y] & R) >> 24,
-              (imagem8[x][y] & G) >> 16, (imagem8[x][y] & B) >> 8);
+      draw_xy((x * 2) + xoffset, y + yoffset, (imagem9[x][y] & R) >> 24,
+              (imagem9[x][y] & G) >> 16, (imagem9[x][y] & B) >> 8);
     }
   }
   printf("\n");
