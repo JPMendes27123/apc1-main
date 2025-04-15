@@ -172,6 +172,7 @@ int main() {
       pchar3[i+3] = cinza;
       
   }
+
   // Exercício 3
   //imagem diagonais azul.
   unsigned char *pchar4 = (unsigned char *)imagem4;
@@ -225,12 +226,9 @@ int main() {
     }
 
   }
-  // insira o seu código abaixo
-  // solução:  
-  // insira o seu código acima
 
   // Exercício 6
-  //Arvore verde embaixo
+  //Arvore verde embaixo.
   unsigned char *pchar6 = (unsigned char *)imagem6;
 
   for (int i = 0; i < 10 ; i++) {
@@ -242,12 +240,9 @@ int main() {
       }
     }
 } 
-  // insira o seu código abaixo
-  // solução:  
-  // insira o seu código acima
 
   // Exercício 7
-  //Arvore vermelha encima
+  //Arvore vermelha encima.
   unsigned char *pchar7 = (unsigned char *)imagem7;
 
   for (int i = 0; i < 10 ; i++) {
@@ -258,13 +253,10 @@ int main() {
         imagem7[i][j] = imagem7[i][j];
       }
     }
-} 
-  // insira o seu código abaixo
-  // solução:  
-  // insira o seu código acima
+ } 
 
   // Exercício 8 
-  //Arvore espelhada esquerda laranja
+  //Arvore espelhada esquerda laranja.
   unsigned char *pchar8 = (unsigned char *)imagem8;
 
   for (int i = 0; i < 10 ; i++) {
@@ -278,9 +270,9 @@ int main() {
         imagem8[i][j] = imagem8[i][j];
       }
     }
-} 
-/*
-for (int i = 0; i < 10 ; i++) {
+ } 
+ /*
+ for (int i = 0; i < 10 ; i++) {
   for (int j = 0; j < 10; j++) { 
     if (i <= j && i < 5 && j < 5) {
       imagem8[i][j] = 0xFF8C0000;
@@ -290,37 +282,39 @@ for (int i = 0; i < 10 ; i++) {
       imagem8[i][j] = imagem8[i][j];
     }
   }
-} */
-
-  // insira o seu código abaixo
-  // solução:  
-  // insira o seu código acima
+ } */
 
   // Exercício 9
+  //Uniao de arvores.
   unsigned char *pchar9 = (unsigned char *)imagem9;
 
-  for (int i = 0; i < 10 ; i++) {
+ //pintar sentido anti horario
+ //vermelho
+  for (int i = 0; i < 10; i++) {
     for (int j = 0; j < 10; j++) {
-      //laranja
-      if (i <= j && i < 5 && j < 5) {
-        imagem9[i][j] = 0xFF8C0000;
-      } else if ((i + j) <= 9 && i >= 5 && j < 5) {
-        imagem9[j][i] = 0xFF8C0000;
-      } else
-      //verde
-      if (i <= j) {
-        imagem9[i][j] = 0x00640000;
-      } else
-      //vermelho
-      if ((i + j) <= 9) {
-        imagem9[i][j] = 0xFF000000;
-      } else
-        imagem9[i][j] = imagem9[i][j];
+        if ((i + j) <= 9) {
+            imagem9[i][j] = 0xFF000000;
+        }
     }
+ }
+ //laranja
+ for (int i = 0; i < 10; i++) {
+  for (int j = 0; j < 10; j++) {
+      if (i <= j) {
+          imagem9[i][j] = 0xFF8C0000;
+      }
   }
-  // insira o seu código abaixo
-  // solução:  
-  // insira o seu código acima
+ }
+ //verde
+ for (int i = 5; i <= 9; i++) {
+  int dif = i - 5;
+  int col1 = 5 - dif;
+  int colf = 5 + dif;
+  
+  for (int j = col1; j <= colf; j++) {
+    imagem9[j][i] = 0x00640000;
+ }
+ }
 
   // limpa a tela
   clear();
