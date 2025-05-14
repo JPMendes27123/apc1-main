@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-//avaliacao - passagem parâmetros
+//Avaliacao 2 - APC II - passagem parâmetros
 
 // 1. c) i.
 int inverter_sinal(int x) {
