@@ -1,0 +1,4 @@
+Modelo,Acuracia,F1_Score,Precisao,Recall
+SVM,0.4,0.22857142857142856,0.16,0.4
+Naive Bayes,0.6,0.5333333333333333,0.6,0.6
+Arvore de Decisao,0.4,0.22857142857142856,0.16,0.4
